@@ -12,10 +12,16 @@ services:
 
   - type: web
     name: tt-tech-backend
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && node server.js
+    buildCommand: |
+      npm install
+      mkdir -p src/middleware
+      cp -r backend/middleware/* src/middleware/
+      cp -r backend/routes/* src/routes/
+      cp -r backend/models/* src/models/
+      cp -r backend/services/* src/services/
+    startCommand: npm start
     envVars:
       - key: PORT
         value: 8080
       - key: MONGODB_URI
-        sync: false # You'll need to set this in Render dashboard
+        sync: false

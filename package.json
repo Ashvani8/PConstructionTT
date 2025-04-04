@@ -8,8 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node src/server.js",
-    "server": "nodemon src/server.js"
+    "start": "node src/api/pcbuilder.js",
+    "server": "nodemon src/api/pcbuilder.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
