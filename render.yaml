@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: tt-tech-frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: tt-tech-backend
+          type: web
+          property: url
+
+  - type: web
+    name: tt-tech-backend
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: MONGODB_URI
+        sync: false # You'll need to set this in Render dashboard
